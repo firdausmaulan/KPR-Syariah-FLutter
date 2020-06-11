@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import 'package:syariah/utils/constants.dart' as Constants;
 import 'package:syariah/utils/flutter_masked_text.dart';
+
+import 'developer_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,6 +51,15 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       navigationBar: CupertinoNavigationBar(
         middle: Text(Constants.APP_NAME),
+        trailing: GestureDetector(
+          child: Icon(CupertinoIcons.info, color: CupertinoColors.activeBlue),
+          onTap: () => {
+            Navigator.push(
+              context,
+              CupertinoPageRoute(builder: (context) => DeveloperPage()),
+            )
+          },
+        ),
       ),
       child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -63,7 +72,8 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: EdgeInsets.only(bottom: 5),
                   child: Text('Harga Rumah',
-                      style: TextStyle(fontSize: 12, color: Colors.grey)),
+                      style: TextStyle(
+                          fontSize: 12, color: CupertinoColors.systemGrey)),
                 ),
                 CupertinoTextField(
                   controller: tfPriceController,
@@ -71,14 +81,15 @@ class _HomePageState extends State<HomePage> {
                   keyboardType: TextInputType.number,
                   prefix: Text(
                     Constants.PADDING + Constants.CURRENCY,
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: CupertinoColors.systemGrey),
                   ),
                   placeholder: '0',
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 5, top: 15),
                   child: Text('Uang Muka',
-                      style: TextStyle(fontSize: 12, color: Colors.grey)),
+                      style: TextStyle(
+                          fontSize: 12, color: CupertinoColors.systemGrey)),
                 ),
                 CupertinoTextField(
                   controller: tfDownPaymentController,
@@ -86,14 +97,15 @@ class _HomePageState extends State<HomePage> {
                   keyboardType: TextInputType.number,
                   prefix: Text(
                     Constants.PADDING + Constants.CURRENCY,
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: CupertinoColors.systemGrey),
                   ),
                   placeholder: '0',
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 5, top: 15),
                   child: Text('Margin (%)',
-                      style: TextStyle(fontSize: 12, color: Colors.grey)),
+                      style: TextStyle(
+                          fontSize: 12, color: CupertinoColors.systemGrey)),
                 ),
                 CupertinoTextField(
                   controller: tfMarginController,
@@ -101,14 +113,15 @@ class _HomePageState extends State<HomePage> {
                   keyboardType: TextInputType.number,
                   prefix: Text(
                     Constants.PADDING + Constants.CURRENCY,
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: CupertinoColors.systemGrey),
                   ),
                   placeholder: '0',
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 5, top: 15),
                   child: Text('Lama Cicilan (Tahun)',
-                      style: TextStyle(fontSize: 12, color: Colors.grey)),
+                      style: TextStyle(
+                          fontSize: 12, color: CupertinoColors.systemGrey)),
                 ),
                 CupertinoTextField(
                   controller: tfTenorController,
@@ -116,14 +129,15 @@ class _HomePageState extends State<HomePage> {
                   keyboardType: TextInputType.number,
                   prefix: Text(
                     Constants.PADDING + Constants.CURRENCY,
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: CupertinoColors.systemGrey),
                   ),
                   placeholder: '0',
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 5, top: 15),
                   child: Text('Perkiraan Cicilan / Bulan',
-                      style: TextStyle(fontSize: 12, color: Colors.grey)),
+                      style: TextStyle(
+                          fontSize: 12, color: CupertinoColors.systemGrey)),
                 ),
                 CupertinoTextField(
                   controller: tfMonthlyBillController,
@@ -132,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                   keyboardType: TextInputType.number,
                   prefix: Text(
                     Constants.PADDING + Constants.CURRENCY,
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: CupertinoColors.systemGrey),
                   ),
                   placeholder: '0',
                 ),
@@ -141,8 +155,8 @@ class _HomePageState extends State<HomePage> {
                   width: double.infinity,
                   child: CupertinoButton(
                     onPressed: _countMonthlyBill,
-                    disabledColor: Colors.blue,
-                    color: Colors.blue,
+                    disabledColor: CupertinoColors.activeBlue,
+                    color: CupertinoColors.activeBlue,
                     child: Text('Hitung'.toUpperCase()),
                   ),
                 )
